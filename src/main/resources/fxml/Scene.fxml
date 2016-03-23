@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="568.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.SceneController">
+    <children>
+        <Button fx:id="clearTableView" layoutX="612.0" layoutY="508.0" onAction="#handleClearTableView" prefHeight="24.0" prefWidth="123.0" text="Wyczyść wszystko!">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Button>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        <GridPane layoutX="25.0" layoutY="18.0" prefHeight="189.0" prefWidth="297.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="87.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="210.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label alignment="CENTER" prefHeight="17.0" prefWidth="175.0" text="Produkt:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" prefHeight="17.0" prefWidth="173.0" text="Ilość:" GridPane.rowIndex="2" />
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="69.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="141.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="138.0" text="Ilość:" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="132.0" text="Cena:" GridPane.rowIndex="1" />
+                        <TextField fx:id="amountField" editable="false" GridPane.columnIndex="1" />
+                        <TextField fx:id="priceField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    </children>
+                </GridPane>
+                <ComboBox fx:id="productComboBox" onAction="#handleComboBox" prefHeight="25.0" prefWidth="358.0" GridPane.columnIndex="1" />
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <TextField fx:id="amountUsedField" prefHeight="26.0" prefWidth="139.0">
+                     <padding>
+                        <Insets left="4.0" />
+                     </padding>
+                        </TextField>
+                        <Label fx:id="unitLabel" alignment="CENTER" prefHeight="17.0" prefWidth="46.0">
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+        <TableView fx:id="tableView" layoutX="344.0" layoutY="27.0" prefHeight="474.0" prefWidth="391.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" editable="false" prefWidth="240.0" resizable="false" text="Nazwa" />
+                <TableColumn fx:id="amountColumn" editable="false" prefWidth="75.0" resizable="false" text="Ilość" />
+                <TableColumn fx:id="priceColumn" editable="false" prefWidth="75.0" resizable="false" text="Cena" />
+            </columns>
+        </TableView>
+        <Button fx:id="dodaj" defaultButton="true" layoutX="91.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleDodaj" prefHeight="25.0" prefWidth="78.0" text="Dodaj">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Button>
+        <Button fx:id="usun" layoutX="475.0" layoutY="508.0" mnemonicParsing="false" onAction="#handleUsun" prefHeight="25.0" prefWidth="123.0" text="Usuń pojedynczy">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Button>
+        <Button fx:id="wyczysc" layoutX="178.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleWyczysc" prefHeight="25.0" prefWidth="109.0" text="Wyczyść pola">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Button>
+        <TextField fx:id="priceAllField" editable="false" layoutX="231.0" layoutY="520.0" prefHeight="25.0" prefWidth="137.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <Label alignment="CENTER" layoutX="130.0" layoutY="519.0" prefHeight="25.0" prefWidth="85.0" text="Razem:">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="381.0" layoutY="527.0" text="zł" />
+      <GridPane layoutX="19.0" layoutY="255.0" prefHeight="239.0" prefWidth="317.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="79.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" prefWidth="101.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="112.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="38.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="164.0" text="Prąd:" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="75.0" text="Woda i kanalizacja:" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="107.0" text="Czas pracy:" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="134.0" text="za godzinę:" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="113.0" text="zużycie:" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="143.0" text="za metr^3:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="114.0" text="zużycie:" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" prefHeight="55.0" prefWidth="98.0" text="stawka za godzinę:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="117.0" text="czas:" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="energyCost" onAction="#handleUpdatePower" GridPane.columnIndex="2" />
+            <TextField fx:id="energyUsed" onAction="#handleUpdatePower" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="waterCost" onAction="#handleUpdateWater" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="waterUsed" onAction="#handleUpdateWater" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="timeCost" onAction="#handleUpdateTime" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="timeUsed" onAction="#handleUpdateTime" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="kWh" alignment="CENTER" prefHeight="17.0" prefWidth="57.0" text="zł" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="52.0" text="min" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="waterUnit" alignment="CENTER" prefHeight="17.0" prefWidth="71.0" text="zł" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label fx:id="waterUnit" alignment="CENTER" prefHeight="17.0" prefWidth="57.0" text="m^3" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label fx:id="timeUnit" alignment="CENTER" prefHeight="17.0" prefWidth="40.0" text="zł" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="timeUnit" alignment="CENTER" prefHeight="17.0" prefWidth="40.0" text="h" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="137.0" text="moc:" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="energyPower" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="62.0" text="W" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+    </children>
+</AnchorPane>
