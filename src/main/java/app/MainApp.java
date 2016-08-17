@@ -7,8 +7,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import app.model.Product;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -88,8 +89,9 @@ public class MainApp extends Application {
             appData.setProducts(productsTemp);
             file.close();
         } catch (FileNotFoundException fnfex) {
-            Alert alert = new Alert(AlertType.ERROR, "File not found!", ButtonType.OK);
+            Alert alert = new Alert(AlertType.ERROR, "Ups! Nie znaleziono pliku.", ButtonType.OK);
             alert.showAndWait();
+            throw new RuntimeException();
         }
     }
 }

@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import app.controller.SceneController;
+import app.model.Item;
+import app.model.Math;
+import app.model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
@@ -16,9 +21,15 @@ public class AppData {
     private Map<String, Product> products = new HashMap<>();
     private Map<String, Double> energyWaterTime = new HashMap<>();
     private ObservableList<Item> items = FXCollections.observableArrayList();
+
     private MainApp mainApp;
+    private Math math;
     private SceneController controller;
     private Double priceAll = 0.0;
+    private Double priceProducts = 0.0;
+    private Double priceEnergy = 0.0;
+    private Double priceWater = 0.0;
+    private Double priceTime = 0.0;
 
     private static AppData appData;
 
@@ -35,7 +46,8 @@ public class AppData {
     }
 
     public void addToPrice(double cost) {
-        this.priceAll += cost;
+        this.priceAll = (priceAll < 0) ? 0 : priceAll + cost;
+        math.round4(this.priceAll);
     }
 
     public ObservableList<String> getAllProductsNames() {
@@ -47,5 +59,9 @@ public class AppData {
             productsNames.add(key.toString());
         }
         return productsNames.sorted();
+    }
+
+    public int getItemIndex(Item item){
+        return items.indexOf(item);
     }
 }
