@@ -46,12 +46,13 @@ public class MainApp extends Application {
     }
 
     public void readFile() throws IOException, InvalidFormatException {
+        Map<String, Product> productsTemp = new HashMap<>();
         try {
             FileInputStream file = new FileInputStream(new File("Data.xls"));
             Workbook workbook = WorkbookFactory.create(file); //reference to .xlsx file
             Sheet sheet = workbook.getSheetAt(0); //first/desired sheet from the workbook
 
-            Map<String, Product> productsTemp = new HashMap<>();
+            //Map<String, Product> productsTemp = new HashMap<>();
             Iterator<Row> rowIterator = sheet.iterator();
             for (int i = 0; i < 3; i++) {
                 Row row = rowIterator.next();

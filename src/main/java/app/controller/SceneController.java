@@ -2,9 +2,12 @@ package app.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import app.AppData;
+import app.PDFCreate;
 import app.model.Item;
 import app.model.Math;
 import app.model.Product;
@@ -42,6 +45,9 @@ public class SceneController implements Initializable {
     @FXML private TableColumn<Item, String> nameColumn;
     @FXML private TableColumn<Item, Double> amountColumn;
     @FXML private TableColumn<Item, Double> priceColumn;
+
+    //TODO: dodaj edycję wartości dodatkowych (energia, woda, czas)
+    //TODO: uodpornij wpisywanie wartości do TextField'ów!!!
 
     @FXML
     private void handleClearTableView(ActionEvent event) {
@@ -121,6 +127,19 @@ public class SceneController implements Initializable {
         showTimeCostEditor();
         timeSummary.setText(appData.getPriceTime().toString());
     }
+
+    @FXML
+    private void handleExportPDF(ActionEvent event) throws IOException {
+        showExcelInfo();
+        List<Item> listProd = new ArrayList<>(appData.getItems());
+        PDFCreate pdf = new PDFCreate(listProd, appData);
+        try {
+            pdf.create();
+        } catch (IOException ioex){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Błąd generowania pliku.", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
     
     private void updatePriceAll_product(double cost) {
         appData.addToPrice(cost);
@@ -157,6 +176,15 @@ public class SceneController implements Initializable {
         TimeCostEditorController tcec = loader.getController();
         Stage newStage = setSceneAndStage(root);
         tcec.setSceneController(this);
+        newStage.showAndWait();
+    }
+
+    private void showExcelInfo() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ExcelInfo.fxml"));
+        Parent root = (Parent) loader.load();
+        ExcelInfoController eic = loader.getController();
+        Stage newStage = setSceneAndStage(root);
+        eic.setSceneController(this);
         newStage.showAndWait();
     }
 

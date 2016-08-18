@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -23,13 +24,17 @@ public class AppData {
     private ObservableList<Item> items = FXCollections.observableArrayList();
 
     private MainApp mainApp;
-    private Math math;
+    private Math math = new Math();
     private SceneController controller;
     private Double priceAll = 0.0;
     private Double priceProducts = 0.0;
     private Double priceEnergy = 0.0;
     private Double priceWater = 0.0;
     private Double priceTime = 0.0;
+
+    private String fileName;
+    private String fileTitle;
+    private Date date;
 
     private static AppData appData;
 
