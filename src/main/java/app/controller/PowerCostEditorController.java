@@ -9,13 +9,14 @@ import javafx.stage.Stage;
 /**
  * Created by mloda on 2016-08-17.
  */
-public class PowerCostEditorController {
+public class PowerCostEditorController implements Controller{
     @FXML private Label priceByHour;
     @FXML private TextField consumption;
     @FXML private TextField power;
 
     private SceneController controller;
 
+    @Override
     public void setSceneController(SceneController controller) {
         this.controller = controller;
         priceByHour.setText(this.controller.getAppData().getEnergyWaterTime().get("prąd").toString());

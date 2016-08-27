@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,6 @@ public class SceneController implements Initializable {
     @FXML private TableColumn<Item, Double> amountColumn;
     @FXML private TableColumn<Item, Double> priceColumn;
 
-    //TODO: dodaj edycję wartości dodatkowych (energia, woda, czas)
     //TODO: uodpornij wpisywanie wartości do TextField'ów!!!
 
     @FXML
@@ -54,7 +54,7 @@ public class SceneController implements Initializable {
         appData.getItems().clear();
         tableView.getItems().clear();
         tableView.getItems().addAll(appData.getItems());
-        appData.setPriceAll(0.0);
+        appData.setPriceProducts(0.0);
         priceAllField.setText(appData.getPriceAll().toString());
         handleWyczysc(event);
     }
@@ -129,7 +129,17 @@ public class SceneController implements Initializable {
     }
 
     @FXML
-    private void handleExportPDF(ActionEvent event) throws IOException {
+    private void handleAddNewProduct(ActionEvent event) throws IOException {
+        showSetProduct();
+    }
+
+    @FXML
+    private void handleEditProducts(ActionEvent event){
+
+    }
+
+    @FXML
+    private void handleExportPDF(ActionEvent event) throws IOException, URISyntaxException {
         showExcelInfo();
         List<Item> listProd = new ArrayList<>(appData.getItems());
         PDFCreate pdf = new PDFCreate(listProd, appData);
@@ -152,42 +162,6 @@ public class SceneController implements Initializable {
         priceAllField.setText(appData.getPriceAll().toString());
     }
 
-    private void showPowerCostEditor() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PowerCostEditor.fxml"));
-        Parent root = (Parent) loader.load();
-        PowerCostEditorController pcec = loader.getController();
-        Stage newStage = setSceneAndStage(root);
-        pcec.setSceneController(this);
-        newStage.showAndWait();
-    }
-
-    private void showWaterCostEditor() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/WaterCostEditor.fxml"));
-        Parent root = (Parent) loader.load();
-        WaterCostEditorController wcec = loader.getController();
-        Stage newStage = setSceneAndStage(root);
-        wcec.setSceneController(this);
-        newStage.showAndWait();
-    }
-
-    private void showTimeCostEditor() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TimeCostEditor.fxml"));
-        Parent root = (Parent) loader.load();
-        TimeCostEditorController tcec = loader.getController();
-        Stage newStage = setSceneAndStage(root);
-        tcec.setSceneController(this);
-        newStage.showAndWait();
-    }
-
-    private void showExcelInfo() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ExcelInfo.fxml"));
-        Parent root = (Parent) loader.load();
-        ExcelInfoController eic = loader.getController();
-        Stage newStage = setSceneAndStage(root);
-        eic.setSceneController(this);
-        newStage.showAndWait();
-    }
-
     private Stage setSceneAndStage(Parent root) {
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add("/styles/Styles.css");
@@ -196,12 +170,42 @@ public class SceneController implements Initializable {
         return newStage;
     }
 
+    private void showWindow(String controllerName) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + controllerName +".fxml"));
+        Parent root = (Parent) loader.load();
+        Controller c = loader.getController();
+        Stage newStage = setSceneAndStage(root);
+        c.setSceneController(this);
+        newStage.showAndWait();
+    }
+
+    private void showPowerCostEditor() throws IOException {
+        showWindow("PowerCostEditor");
+    }
+
+    private void showWaterCostEditor() throws IOException {
+        showWindow("WaterCostEditor");
+    }
+
+    private void showTimeCostEditor() throws IOException {
+        showWindow("TimeCostEditor");
+    }
+
+    private void showExcelInfo() throws IOException {
+        showWindow("ExcelInfo");
+    }
+
+    private void showSetProduct() throws IOException {
+        showWindow("SetProduct");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> options = FXCollections.observableArrayList();
         appData.getAllProductsNames().forEach(name -> options.add(name));
 
         productComboBox.getItems().clear();
+        FXCollections.sort(options);
         productComboBox.setItems(FXCollections.observableArrayList(options));
         priceAllField.setText(appData.getPriceAll().toString());
 

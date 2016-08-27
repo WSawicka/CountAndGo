@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Created by mloda on 2016-08-17.
  */
-public class WaterCostEditorController {
+public class WaterCostEditorController implements Controller{
     @FXML private Label priceByMeter;
     @FXML private TextField consumption;
 

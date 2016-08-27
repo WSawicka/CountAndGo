@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Created by mloda on 2016-08-18.
  */
-public class ExcelInfoController {
+public class ExcelInfoController implements Controller{
     @FXML private TextField name;
     @FXML private TextField title;
     @FXML private TextField year;
@@ -19,6 +19,7 @@ public class ExcelInfoController {
 
     private SceneController controller;
 
+    @Override
     public void setSceneController(SceneController controller) {
         this.controller = controller;
     }

@@ -1,9 +1,6 @@
 package app;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import app.controller.SceneController;
@@ -63,10 +60,18 @@ public class AppData {
             Object key = thisEntry.getKey();
             productsNames.add(key.toString());
         }
-        return productsNames.sorted();
+        return productsNames;
     }
 
     public int getItemIndex(Item item){
         return items.indexOf(item);
+    }
+
+    public double getPriceProducts(){
+        double all = 0.0;
+        for(Item i : items){
+            all += i.getCost();
+        }
+        return all;
     }
 }

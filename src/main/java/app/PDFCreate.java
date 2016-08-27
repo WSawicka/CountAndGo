@@ -1,13 +1,20 @@
 package app;
 
 import app.model.Item;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.*;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,93 +27,61 @@ public class PDFCreate {
     private String name;
     private String title;
     private Date date;
-    AppData appData;
+    private AppData appData;
 
-    private PDDocument document;
-    private PDPage page;
-    private PDFont font;
-    private PDPageContentStream stream;
+    private PdfWriter writer;
+    private PdfDocument pdf;
+    private Document document;
+    private PdfFont font;
+    private PdfFont bold;
 
-    public PDFCreate(List<Item> items, AppData appData){
+    public PDFCreate(List<Item> items, AppData appData) throws IOException {
         this.items = new ArrayList<>();
         this.items.addAll(items);
         this.appData = appData;
+        this.font = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        this.bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
     }
 
-    public void create() throws IOException {
+    public void create() throws IOException, URISyntaxException {
         this.name = this.appData.getFileName();
         this.title = this.appData.getFileTitle();
         this.date = this.appData.getDate();
         prepare();
         write();
-        close();
+        this.document.close();
     }
 
     private void prepare() throws  IOException{
-        document = new PDDocument();
-        page = new PDPage();
-        document.addPage(page);
-        stream = new PDPageContentStream(document, page);
+        this.writer = new PdfWriter(this.name + ".pdf");
+        this.pdf = new PdfDocument(this.writer);
+        this.document = new Document(pdf);
+        this.document.setMargins(55, 40, 55, 40);
     }
 
-    private void write() throws IOException{
-        //TODO: dopracuj wygląd
-        stream.beginText();
-        font = PDType1Font.TIMES_BOLD;
-        stream.setFont(font, 18);
+    private void write() throws IOException, URISyntaxException {
+        this.document.add(new Paragraph(title));
+        this.document.add(new Paragraph(date.toString()));
 
-        stream.moveTextPositionByAmount(160, 750);
-        stream.drawString(title);
+        //title;
+        //date.toString();
+        //"Nazwa produktu";
+        //"Uzyta ilosc";
+        //"Cena laczna";
+        //for(Item i : items){
+        //    i.getProduct().toString();
+        //    i.getAmount().toString();
+        //    i.getCost().toString();
+        //}
 
-        stream.moveTextPositionByAmount(-50, -40);
-        font = PDType1Font.TIMES_ROMAN;
-        stream.setFont(font, 13);
-        stream.drawString("Nazwa produktu");
-        tab();
-        stream.drawString("Uzyta ilosc");
-        tab();
-        stream.drawString("Cena laczna");
-        stream.setFont(font, 12);
-        for(Item i : items){
-            stream.moveTextPositionByAmount(-200, -20);
-            stream.drawString(i.getProduct());
-            tab();
-            stream.drawString(i.getAmount().toString());
-            tab();
-            stream.drawString(i.getCost().toString());
-        }
+        //"Prad:";
+        //this.appData.getPriceEnergy().toString();
+        //"Woda:";
+        //this.appData.getPriceWater().toString();
+        //"Czas pracy:";
+        //this.appData.getPriceTime().toString();
 
-        stream.moveTextPositionByAmount(-200, -40);
-        stream.drawString("Prad:");
-        tab();
-        stream.drawString(this.appData.getPriceEnergy().toString());
-
-        stream.moveTextPositionByAmount(-100, -20);
-        stream.drawString("Woda:");
-        tab();
-        stream.drawString(this.appData.getPriceWater().toString());
-
-        stream.moveTextPositionByAmount(-100, -20);
-        stream.drawString("Czas pracy:");
-        tab();
-        stream.drawString(this.appData.getPriceTime().toString());
-
-        tab();
-        stream.drawString("Cena laczna");
-        tab();
-        stream.drawString(String.valueOf(this.appData.getPriceAll()));
-
-        //TODO: dopisz datę
-        stream.endText();
-    }
-
-    private void close() throws IOException{
-        stream.close();
-        document.save(name + ".pdf");
-        document.close();
-    }
-
-    private void tab() throws IOException {
-        stream.moveTextPositionByAmount(100, 0);
+        //stream.showText("Cena laczna");
+        //stream.showText(String.valueOf(this.appData.getPriceAll());
     }
 }

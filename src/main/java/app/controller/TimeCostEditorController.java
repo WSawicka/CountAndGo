@@ -9,12 +9,13 @@ import javafx.stage.Stage;
 /**
  * Created by mloda on 2016-08-17.
  */
-public class TimeCostEditorController {
+public class TimeCostEditorController implements Controller{
     @FXML private Label priceByHour;
     @FXML private TextField time;
 
     private SceneController controller;
 
+    @Override
     public void setSceneController(SceneController controller) {
         this.controller = controller;
         priceByHour.setText(this.controller.getAppData().getEnergyWaterTime().get("praca").toString());
