@@ -8,13 +8,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,8 +59,6 @@ public class PDFCreate {
         this.document.add(new Paragraph(title));
         this.document.add(new Paragraph(date.toString()));
 
-        //title;
-        //date.toString();
         //"Nazwa produktu";
         //"Uzyta ilosc";
         //"Cena laczna";
