@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by mloda on 2016-08-18.
@@ -31,7 +31,8 @@ public class ExcelInfoController implements Controller{
         int y = Integer.parseInt(year.getText());
         int m = Integer.parseInt(month.getText());
         int d = Integer.parseInt(day.getText());
-        Date date = new Date(y, m, d);
+        Calendar date = Calendar.getInstance();
+        date.set(y, m, d);
         this.controller.getAppData().setDate(date);
         Stage stage = (Stage) name.getScene().getWindow();
         stage.close();

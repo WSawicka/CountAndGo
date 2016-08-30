@@ -12,6 +12,7 @@ import app.PDFCreate;
 import app.model.Item;
 import app.model.Math;
 import app.model.Product;
+import com.itextpdf.text.DocumentException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -139,7 +140,7 @@ public class SceneController implements Initializable {
     }
 
     @FXML
-    private void handleExportPDF(ActionEvent event) throws IOException, URISyntaxException {
+    private void handleExportPDF(ActionEvent event) throws IOException, URISyntaxException, DocumentException {
         showExcelInfo();
         List<Item> listProd = new ArrayList<>(appData.getItems());
         PDFCreate pdf = new PDFCreate(listProd, appData);
@@ -172,7 +173,7 @@ public class SceneController implements Initializable {
 
     private void showWindow(String controllerName) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + controllerName +".fxml"));
-        Parent root = (Parent) loader.load();
+        Parent root = loader.load();
         Controller c = loader.getController();
         Stage newStage = setSceneAndStage(root);
         c.setSceneController(this);

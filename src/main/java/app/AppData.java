@@ -31,7 +31,7 @@ public class AppData {
 
     private String fileName;
     private String fileTitle;
-    private Date date;
+    private Calendar date;
 
     private static AppData appData;
 
