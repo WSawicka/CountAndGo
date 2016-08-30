@@ -33,6 +33,8 @@ public class AppData {
     private String fileTitle;
     private Calendar date;
 
+    private String excelFilePath;
+
     private static AppData appData;
 
     public static AppData getInstance() {

@@ -1,5 +1,7 @@
 package app.controller;
 
+import app.AlertWindow;
+import app.model.AlertEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -28,9 +30,19 @@ public class ExcelInfoController implements Controller{
     private void handleExport(ActionEvent event){
         this.controller.getAppData().setFileName(name.getText());
         this.controller.getAppData().setFileTitle(title.getText());
-        int y = Integer.parseInt(year.getText());
-        int m = Integer.parseInt(month.getText());
-        int d = Integer.parseInt(day.getText());
+        int y;
+        int m;
+        int d;
+
+        try {
+            y = Integer.parseInt(year.getText());
+            m = Integer.parseInt(month.getText());
+            d = Integer.parseInt(day.getText());
+        } catch(NumberFormatException nfex){
+            new AlertWindow().show(AlertEnum.NOT_NUMERIC_VALUE);
+            return;
+        }
+
         Calendar date = Calendar.getInstance();
         date.set(y, m, d);
         this.controller.getAppData().setDate(date);

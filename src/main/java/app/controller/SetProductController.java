@@ -23,7 +23,6 @@ public class SetProductController implements Controller{
 
     @FXML
     private void handleSave(ActionEvent event){
-
         Stage stage = (Stage) this.name.getScene().getWindow();
         stage.close();
     }

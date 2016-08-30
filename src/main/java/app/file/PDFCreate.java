@@ -1,5 +1,6 @@
-package app;
+package app.file;
 
+import app.AppData;
 import app.model.Item;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.color.*;
@@ -68,7 +69,7 @@ public class PDFCreate {
         this.document.add(generateProductTable());
         setAdditionalValues();
 
-        this.document.add(new Paragraph("Cena ogólna: " + String.valueOf(this.appData.getPriceAll())).setFont(this.font).setBold().setTextAlignment(TextAlignment.RIGHT));
+        this.document.add(new Paragraph("Cena ogólna: " + this.appData.getPriceAll().toString()).setFont(this.font).setBold().setTextAlignment(TextAlignment.RIGHT));
     }
 
     private void setTitleAndDate(){
@@ -101,7 +102,7 @@ public class PDFCreate {
     }
 
     private String dateToString(){
-        Date d = date.getTime();
+        Date d = this.date.getTime();
         return d.toString();
     }
 }

@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import app.AlertWindow;
 import app.AppData;
-import app.PDFCreate;
+import app.file.PDFCreate;
+import app.model.AlertEnum;
 import app.model.Item;
 import app.model.Math;
 import app.model.Product;
@@ -48,8 +50,6 @@ public class SceneController implements Initializable {
     @FXML private TableColumn<Item, Double> amountColumn;
     @FXML private TableColumn<Item, Double> priceColumn;
 
-    //TODO: uodpornij wpisywanie wartości do TextField'ów!!!
-
     @FXML
     private void handleClearTableView(ActionEvent event) {
         appData.getItems().clear();
@@ -66,8 +66,7 @@ public class SceneController implements Initializable {
         try {
             amountUsed = Double.valueOf(amountUsedField.getText());
         } catch (NumberFormatException nfex){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Możesz wpisać tylko liczbę!", ButtonType.OK);
-            alert.showAndWait();
+            new AlertWindow().show(AlertEnum.NOT_NUMERIC_VALUE);
             return;
         }
         Product p = appData.getProducts().get(productChosen);
@@ -147,8 +146,7 @@ public class SceneController implements Initializable {
         try {
             pdf.create();
         } catch (IOException ioex){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Błąd generowania pliku.", ButtonType.OK);
-            alert.showAndWait();
+            new AlertWindow().show(AlertEnum.FILE_ERROR);
         }
     }
     
@@ -215,5 +213,9 @@ public class SceneController implements Initializable {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
 
         tableView.getItems().setAll(appData.getItems());
+    }
+
+    public Stage getStage(){
+        return this.getStage();
     }
 }
