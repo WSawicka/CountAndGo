@@ -1,5 +1,7 @@
 package app.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -9,6 +11,7 @@ import java.util.ResourceBundle;
 
 import app.AlertWindow;
 import app.AppData;
+import app.file.ExcelRead;
 import app.file.PDFCreate;
 import app.model.AlertEnum;
 import app.model.Item;
@@ -25,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -129,13 +133,23 @@ public class SceneController implements Initializable {
     }
 
     @FXML
-    private void handleAddNewProduct(ActionEvent event) throws IOException {
-        showSetProduct();
-    }
+    private void changeDBFilePath(ActionEvent event) throws FileNotFoundException {
+        ExcelRead elRd = new ExcelRead();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        Stage stage = new Stage();
+        fileChooser.setTitle("Wybierz plik");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("XLS", "*.xls"),
+                new FileChooser.ExtensionFilter("XLSX", "*.xlsx")
+        );
 
-    @FXML
-    private void handleEditProducts(ActionEvent event){
-
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            elRd.saveXML(file.toString());
+        }
+        else throw new FileNotFoundException();
     }
 
     @FXML

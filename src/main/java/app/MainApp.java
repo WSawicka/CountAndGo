@@ -34,8 +34,6 @@ public class MainApp extends Application {
         ExcelRead read = new ExcelRead();
         try {
             read.readFile();
-        } catch(InvalidFormatException ifex){
-            new AlertWindow().show(AlertEnum.INVALID_FILE_FORMAT);
         } catch(IOException ioex){
             new AlertWindow().show(AlertEnum.FILE_NOT_FOUND);
         }

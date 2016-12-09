@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: /media/ws/604A9F81302AC804/_POLIBUDA/Programowanie/Java/CountAndGo/src/main/java/app
+Main-Class: app.MainApp
+
