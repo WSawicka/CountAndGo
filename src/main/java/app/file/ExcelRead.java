@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -82,21 +83,25 @@ public class ExcelRead {
             Row row = rowIterator.next();
             Iterator<Cell> cellIterator = row.cellIterator(); //For each row, through all the 4 columns
 
-            //name cell
-            Cell cell1 = cellIterator.next();
-            String name = cell1.getStringCellValue();
-            //amount cell
-            Cell cell2 = cellIterator.next();
-            Double amount = cell2.getNumericCellValue();
-            //price cell
-            Cell cell3 = cellIterator.next();
-            Double price = cell3.getNumericCellValue();
-            //unit cell
-            Cell cell4 = cellIterator.next();
-            String unit = cell4.getStringCellValue();
+            try{
+                //name cell
+                Cell cell1 = cellIterator.next();
+                String name = cell1.getStringCellValue();
+                //amount cell
+                Cell cell2 = cellIterator.next();
+                Double amount = cell2.getNumericCellValue();
+                //price cell
+                Cell cell3 = cellIterator.next();
+                Double price = cell3.getNumericCellValue();
+                //unit cell
+                Cell cell4 = cellIterator.next();
+                String unit = cell4.getStringCellValue();
 
-            Product product = new Product(amount, price, unit);
-            productsTemp.put(name, product);
+                Product product = new Product(amount, price, unit);
+                productsTemp.put(name, product);
+            } catch (NoSuchElementException nseex) {
+                //add nothing
+            }
         }
     }
 
