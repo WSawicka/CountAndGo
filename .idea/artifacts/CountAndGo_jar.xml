@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CountAndGo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CountAndGo_jar</output-path>
+    <root id="archive" name="CountAndGo.jar">
+      <element id="module-output" name="CountAndGo" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/pdfa/7.0.0/pdfa-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/barcodes/7.0.0/barcodes-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/sign/7.0.0/sign-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.16.6/lombok-1.16.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/forms/7.0.0/forms-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.5/commons-codec-1.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/io/7.0.0/io-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bouncycastle/bcmail-jdk14/1.38/bcmail-jdk14-1.38.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/hyph/7.0.0/hyph-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/stax/stax-api/1.0.1/stax-api-1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/layout/7.0.0/layout-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bouncycastle/bcprov-jdk14/1.38/bcprov-jdk14-1.38.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/xmlbeans/xmlbeans/2.3.0/xmlbeans-2.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/itextpdf/5.0.6/itextpdf-5.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/3.10-FINAL/poi-ooxml-3.10-FINAL.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bouncycastle/bctsp-jdk14/1.38/bctsp-jdk14-1.38.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/kernel/7.0.0/kernel-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/itextpdf/font-asian/7.0.0/font-asian-7.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml-schemas/3.10-FINAL/poi-ooxml-schemas-3.10-FINAL.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
