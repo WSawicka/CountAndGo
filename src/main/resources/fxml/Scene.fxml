@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SceneController">
+<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SceneController">
     <children>
         <Button fx:id="clearTableView" layoutX="705.0" layoutY="541.0" onAction="#handleClearTableView" prefHeight="24.0" prefWidth="123.0" text="Wyczyść wszystko!">
             <font>
@@ -58,7 +58,7 @@
                         <TextField fx:id="priceField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
-                <ComboBox fx:id="productComboBox" onAction="#handleComboBox" prefHeight="25.0" prefWidth="358.0" GridPane.columnIndex="1" />
+                <ComboBox fx:id="productComboBox" editable="true" onAction="#handleComboBox" onKeyReleased="#handleFindTyped" prefHeight="25.0" prefWidth="358.0" GridPane.columnIndex="1" />
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
                         <TextField fx:id="amountUsedField" prefHeight="26.0" prefWidth="139.0">

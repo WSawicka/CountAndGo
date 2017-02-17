@@ -57,7 +57,6 @@ public class ExcelRead {
             file.close();
         } catch (FileNotFoundException fnfex) {
             new AlertWindow().show(AlertEnum.FILE_NOT_FOUND);
-            throw new RuntimeException();
         } catch (InvalidFormatException ifex) {
             new AlertWindow().show(AlertEnum.FILE_NOT_FOUND);
         }

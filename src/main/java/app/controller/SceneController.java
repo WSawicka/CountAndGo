@@ -5,9 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import app.AlertWindow;
 import app.AppData;
@@ -65,6 +64,23 @@ public class SceneController implements Initializable {
     }
 
     @FXML
+    private void handleFindTyped() {
+        productComboBox.hide();
+        String typed = productComboBox.getEditor().getText();
+        List<String> productsLike = this.appData.getProducts().entrySet().stream()
+                .filter(e -> e.getKey().toLowerCase().contains(typed.toLowerCase()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        ObservableList<String> options = FXCollections.observableArrayList();
+        productsLike.forEach(name -> options.add(name));
+        FXCollections.sort(options);
+        productComboBox.getItems().clear();
+        productComboBox.setItems(FXCollections.observableArrayList(options));
+        productComboBox.show();
+    }
+
+    @FXML
     private void handleDodaj(ActionEvent event) {
         Double amountUsed;
         try {
@@ -74,12 +90,18 @@ public class SceneController implements Initializable {
             return;
         }
         Product p = appData.getProducts().get(productChosen);
-        double cost = (p.getPrice().doubleValue() * amountUsed) / p.getAmount().doubleValue();
-        math.round4(cost);
-        Item item = new Item(productChosen, amountUsed, cost);
-        appData.getItems().add(item);
-        tableView.setItems(appData.getItems());
-        updatePriceAll_product(cost);
+
+        if (p!= null){
+            double cost = (p.getPrice().doubleValue() * amountUsed) / p.getAmount().doubleValue();
+            math.round4(cost);
+            Item item = new Item(productChosen, amountUsed, cost);
+            appData.getItems().add(item);
+            tableView.setItems(appData.getItems());
+            updatePriceAll_product(cost);
+        } else {
+            new AlertWindow().show(AlertEnum.PRODUCT_NOT_FOUND);
+            productComboBox.getEditor().setText("");
+        }
     }
 
     @FXML
@@ -105,13 +127,16 @@ public class SceneController implements Initializable {
 
     @FXML
     private void handleComboBox(ActionEvent event) {
-        productChosen = (String) productComboBox.getSelectionModel().getSelectedItem().toString();
-        Product p = appData.getProducts().get(productChosen);
-        if (p != null) {
-            amountField.setText(p.getAmount().getValue().toString());
-            priceField.setText(p.getPrice().getValue().toString());
-            unitLabel.setText(p.getUnit().getValue());
+        if(productComboBox.getSelectionModel().getSelectedItem() != null){
+            productChosen = (String) productComboBox.getSelectionModel().getSelectedItem().toString();
+            Product p = appData.getProducts().get(productChosen);
+            if (p != null) {
+                amountField.setText(p.getAmount().getValue().toString());
+                priceField.setText(p.getPrice().getValue().toString());
+                unitLabel.setText(p.getUnit().getValue());
+            }
         }
+        else productComboBox.getEditor().setText("");
     }
 
     @FXML
