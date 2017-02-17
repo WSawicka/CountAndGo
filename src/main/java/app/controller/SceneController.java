@@ -7,7 +7,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import app.AlertWindow;
 import app.AppData;
@@ -65,6 +67,23 @@ public class SceneController implements Initializable {
     }
 
     @FXML
+    private void handleFindTyped() {
+        productComboBox.hide();
+        String typed = productComboBox.getEditor().getText();
+        List<String> productsLike = this.appData.getProducts().entrySet().stream()
+                .filter(e -> e.getKey().toLowerCase().contains(typed.toLowerCase()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        ObservableList<String> options = FXCollections.observableArrayList();
+        productsLike.forEach(name -> options.add(name));
+        FXCollections.sort(options);
+        productComboBox.getItems().clear();
+        productComboBox.setItems(FXCollections.observableArrayList(options));
+        productComboBox.show();
+    }
+
+    @FXML
     private void handleDodaj(ActionEvent event) {
         Double amountUsed;
         try {
@@ -74,12 +93,16 @@ public class SceneController implements Initializable {
             return;
         }
         Product p = appData.getProducts().get(productChosen);
-        double cost = (p.getPrice().doubleValue() * amountUsed) / p.getAmount().doubleValue();
-        math.round4(cost);
-        Item item = new Item(productChosen, amountUsed, cost);
-        appData.getItems().add(item);
-        tableView.setItems(appData.getItems());
-        updatePriceAll_product(cost);
+        if(p != null) {
+            double cost = (p.getPrice().doubleValue() * amountUsed) / p.getAmount().doubleValue();
+            math.round4(cost);
+            Item item = new Item(productChosen, amountUsed, cost);
+            appData.getItems().add(item);
+            tableView.setItems(appData.getItems());
+            updatePriceAll_product(cost);
+        } else {
+            new AlertWindow().show(AlertEnum.PRODUCT_NOT_FOUND);
+        }
     }
 
     @FXML

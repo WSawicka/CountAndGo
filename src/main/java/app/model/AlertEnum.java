@@ -7,7 +7,8 @@ public enum AlertEnum {
     FILE_ERROR("Błąd pliku."),
     FILE_NOT_FOUND("Nie znaleziono pliku!"),
     INVALID_FILE_FORMAT("Zły format pliku!"),
-    NOT_NUMERIC_VALUE("Tylko wartości numeryczne!");
+    NOT_NUMERIC_VALUE("Tylko wartości numeryczne!"),
+    PRODUCT_NOT_FOUND("Nie ma takiego produktu.");
 
     private String text;
 
