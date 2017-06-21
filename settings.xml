@@ -1,1 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><settings><database id="1"><file>D:\_POLIBUDA\Programowanie\Java\Count&amp;Go\CountAndGo\Data.xls</file></database></settings>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<settings>
+    <database id="1">
+        <file>/home/mloda/Pobrane/Data (2).xls</file>
+    </database>
+</settings>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SaveStateController">
+   <children>
+      <GridPane layoutX="18.0" layoutY="21.0" prefHeight="177.0" prefWidth="405.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="95.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.0" minWidth="10.0" prefWidth="310.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="211.0" text="Nazwa pliku:" textAlignment="CENTER" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="258.0" text="Opis:" GridPane.rowIndex="1" />
+            <TextArea fx:id="descriptionArea" prefHeight="101.0" prefWidth="296.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <TextField fx:id="nameField" prefHeight="25.0" prefWidth="233.0" promptText="*.xml" />
+                  <Button mnemonicParsing="false" onAction="#setStateFileName" text="Otwórz" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <Button defaultButton="true" layoutX="373.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleSave" text="Zapisz" />
+   </children>
+</AnchorPane>

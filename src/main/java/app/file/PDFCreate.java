@@ -3,7 +3,6 @@ package app.file;
 import app.AppData;
 import app.model.Item;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.color.*;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -18,12 +17,11 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import org.joda.time.LocalDate;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,7 +31,7 @@ public class PDFCreate {
     private List<Item> items;
     private String name;
     private String title;
-    private Calendar date;
+    private LocalDate date;
     private AppData appData;
 
     private PdfWriter writer;
@@ -102,7 +100,6 @@ public class PDFCreate {
     }
 
     private String dateToString(){
-        Date d = this.date.getTime();
-        return d.toString();
+        return this.date.toString();
     }
 }

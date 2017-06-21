@@ -145,6 +145,8 @@
             <Menu mnemonicParsing="false" text="Dane aplikacji">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#changeDBFilePath" text="Zmień ścieżkę do pliku" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveState" text="Zapisz aktualny stan" />
+                  <MenuItem mnemonicParsing="false" onAction="#readStates" text="Wczytaj stany" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Eksportuj">

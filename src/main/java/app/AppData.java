@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
+import org.joda.time.LocalDate;
 
 @Getter
 @Setter
@@ -31,7 +32,7 @@ public class AppData {
 
     private String fileName;
     private String fileTitle;
-    private Calendar date;
+    private LocalDate date;
 
     private String excelFilePath;
 

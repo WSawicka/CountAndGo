@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.joda.time.LocalDate;
 
 import java.util.Calendar;
 
@@ -43,8 +44,7 @@ public class ExcelInfoController implements Controller{
             return;
         }
 
-        Calendar date = Calendar.getInstance();
-        date.set(y, m, d);
+        LocalDate date = new LocalDate().withYear(y).withMonthOfYear(m).withDayOfMonth(d);
         this.controller.getAppData().setDate(date);
         Stage stage = (Stage) name.getScene().getWindow();
         stage.close();

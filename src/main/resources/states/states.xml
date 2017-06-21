@@ -1,0 +1,128 @@
+<list>
+  <app.model.States_-State>
+    <description>Drugi zapis</description>
+    <energyWaterTime>
+      <entry>
+        <string>woda</string>
+        <double>6.89</double>
+      </entry>
+      <entry>
+        <string>praca</string>
+        <double>13.0</double>
+      </entry>
+      <entry>
+        <string>prąd</string>
+        <double>0.59</double>
+      </entry>
+    </energyWaterTime>
+    <items class="com.sun.javafx.collections.ObservableListWrapper">
+      <listenerHelper class="com.sun.javafx.collections.ListListenerHelper$Generic">
+        <changeListeners>
+          <javafx.collections.WeakListChangeListener>
+            <ref>
+              <referent class="null"/>
+              <queue class="java.lang.ref.ReferenceQueue$Null">
+                <lock/>
+                <queueLength>0</queueLength>
+              </queue>
+            </ref>
+          </javafx.collections.WeakListChangeListener>
+          <javafx.collections.WeakListChangeListener>
+            <ref>
+              <referent class="null"/>
+              <queue class="java.lang.ref.ReferenceQueue$Null" reference="../../../javafx.collections.WeakListChangeListener/ref/queue"/>
+            </ref>
+          </javafx.collections.WeakListChangeListener>
+          <javafx.collections.WeakListChangeListener>
+            <ref>
+              <referent class="null"/>
+              <queue class="java.lang.ref.ReferenceQueue$Null" reference="../../../javafx.collections.WeakListChangeListener/ref/queue"/>
+            </ref>
+          </javafx.collections.WeakListChangeListener>
+          <null/>
+        </changeListeners>
+        <invalidationSize>0</invalidationSize>
+        <changeSize>3</changeSize>
+        <locked>false</locked>
+      </listenerHelper>
+      <changeBuilder>
+        <list class="com.sun.javafx.collections.ObservableListWrapper" reference="../.."/>
+        <changeLock>0</changeLock>
+        <addRemoveChanges/>
+      </changeBuilder>
+      <backingList>
+        <app.model.Item>
+          <product class="javafx.beans.property.SimpleStringProperty">
+            <value>banany</value>
+            <valid>true</valid>
+            <name></name>
+          </product>
+          <amount class="javafx.beans.property.SimpleDoubleProperty">
+            <value>1.0</value>
+            <valid>true</valid>
+            <name></name>
+          </amount>
+          <cost class="javafx.beans.property.SimpleDoubleProperty">
+            <value>5.0</value>
+            <valid>true</valid>
+            <name></name>
+          </cost>
+        </app.model.Item>
+        <app.model.Item>
+          <product class="javafx.beans.property.SimpleStringProperty">
+            <value>chałwa</value>
+            <valid>true</valid>
+            <name></name>
+          </product>
+          <amount class="javafx.beans.property.SimpleDoubleProperty">
+            <value>300.0</value>
+            <valid>true</valid>
+            <name></name>
+          </amount>
+          <cost class="javafx.beans.property.SimpleDoubleProperty">
+            <value>7.74</value>
+            <valid>true</valid>
+            <name></name>
+          </cost>
+        </app.model.Item>
+        <app.model.Item>
+          <product class="javafx.beans.property.SimpleStringProperty">
+            <value>jajka</value>
+            <valid>true</valid>
+            <name></name>
+          </product>
+          <amount class="javafx.beans.property.SimpleDoubleProperty">
+            <value>3.0</value>
+            <valid>true</valid>
+            <name></name>
+          </amount>
+          <cost class="javafx.beans.property.SimpleDoubleProperty">
+            <value>1.59</value>
+            <valid>true</valid>
+            <name></name>
+          </cost>
+        </app.model.Item>
+        <app.model.Item>
+          <product class="javafx.beans.property.SimpleStringProperty">
+            <value>mąka</value>
+            <valid>true</valid>
+            <name></name>
+          </product>
+          <amount class="javafx.beans.property.SimpleDoubleProperty">
+            <value>0.5</value>
+            <valid>true</valid>
+            <name></name>
+          </amount>
+          <cost class="javafx.beans.property.SimpleDoubleProperty">
+            <value>0.995</value>
+            <valid>true</valid>
+            <name></name>
+          </cost>
+        </app.model.Item>
+      </backingList>
+    </items>
+    <outer-class>
+      <stateList reference="../../.."/>
+    </outer-class>
+  </app.model.States_-State>
+</list>

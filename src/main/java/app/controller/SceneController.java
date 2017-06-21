@@ -5,20 +5,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import app.AlertWindow;
 import app.AppData;
 import app.file.ExcelRead;
 import app.file.PDFCreate;
-import app.model.AlertEnum;
-import app.model.Item;
+import app.model.*;
 import app.model.Math;
-import app.model.Product;
 import com.itextpdf.text.DocumentException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -176,6 +171,16 @@ public class SceneController implements Initializable {
     }
 
     @FXML
+    private void saveState(ActionEvent event) throws IOException {
+        showSaveState();
+    }
+
+    @FXML
+    private void readStates(ActionEvent event) {
+
+    }
+
+    @FXML
     private void handleExportPDF(ActionEvent event) throws IOException, URISyntaxException, DocumentException {
         showExcelInfo();
         List<Item> listProd = new ArrayList<>(appData.getItems());
@@ -213,6 +218,10 @@ public class SceneController implements Initializable {
         Stage newStage = setSceneAndStage(root);
         c.setSceneController(this);
         newStage.showAndWait();
+    }
+
+    private void showSaveState() throws IOException{
+        showWindow("SaveState");
     }
 
     private void showPowerCostEditor() throws IOException {
